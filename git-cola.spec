@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        1.3.5
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -22,6 +22,7 @@ BuildRequires:  git-core
 BuildRequires:  gettext
 BuildRequires:  xmlto
 Requires:       git-core
+Requires:       PyQt4
 Requires:       python-inotify
 
 %description
@@ -66,6 +67,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Feb 9 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5-4
+- Added missing Requires on PyQt4
+
 * Thu Feb 5 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5-3
 - Added patch for shebang line removal
 
