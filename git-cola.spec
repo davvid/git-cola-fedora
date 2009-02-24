@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        1.3.5
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -67,6 +67,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.5-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Mon Feb 9 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5-4
 - Added missing Requires on PyQt4
 
