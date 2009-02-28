@@ -3,14 +3,16 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           git-cola
-Version:        1.3.5
-Release:        5%{?dist}
+Version:        1.3.5.28
+Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
 Source0:        http://cola.tuxfamily.org/releases/cola-%{version}-src.tar.gz
+## Upstream patches
+# Accepted (target 1.3.6)
 Patch99:        git-cola-shebang.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -43,12 +45,22 @@ make doc
 %install
 rm -rf %{buildroot}
 %{__python} setup.py install -O1 --skip-build --root %{buildroot} --prefix=%{_prefix}
+rm -f %{buildroot}%{_datadir}/applications/cola.desktop
+desktop-file-install --delete-original --dir %{buildroot}%{_datadir}/applications share/applications/cola.desktop
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
 
- 
+
 %clean
 rm -rf %{buildroot}
+
+
+%post
+update-desktop-database &> /dev/null || :
+
+
+%postun
+update-desktop-database &> /dev/null || :
 
 
 %files
@@ -67,6 +79,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat Feb 28 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5.28-1
+- Added %post and %postun
+- Use desktop-file-install
+
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.5-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
