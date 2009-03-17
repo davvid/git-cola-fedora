@@ -3,7 +3,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           git-cola
-Version:        1.3.5.28
+Version:        1.3.5.42
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
@@ -11,9 +11,6 @@ Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
 Source0:        http://cola.tuxfamily.org/releases/cola-%{version}-src.tar.gz
-## Upstream patches
-# Accepted (target 1.3.6)
-Patch99:        git-cola-shebang.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -33,7 +30,6 @@ sugary flavour and caffeine-inspired features.
 
 %prep
 %setup -q -n cola-%{version}
-%patch99
 
 
 %build
@@ -79,6 +75,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Mon Mar 16 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5.42-1
+- Update to 1.3.5.42
+
 * Sat Feb 28 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5.28-1
 - Added %post and %postun
 - Use desktop-file-install
