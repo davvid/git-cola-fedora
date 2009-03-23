@@ -3,7 +3,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           git-cola
-Version:        1.3.5.42
+Version:        1.3.6
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
@@ -14,6 +14,7 @@ Source0:        http://cola.tuxfamily.org/releases/cola-%{version}-src.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
+BuildRequires:  desktop-file-utils
 BuildRequires:  python-devel
 BuildRequires:  PyQt4-devel
 BuildRequires:  asciidoc
@@ -75,6 +76,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Mon Mar 23 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.6-1
+- Update to 1.3.6
+
 * Mon Mar 16 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5.42-1
 - Update to 1.3.5.42
 
