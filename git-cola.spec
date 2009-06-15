@@ -3,7 +3,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           git-cola
-Version:        1.3.6
+Version:        1.3.8
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
@@ -18,10 +18,11 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  python-devel
 BuildRequires:  PyQt4-devel
 BuildRequires:  asciidoc
-BuildRequires:  git-core
+BuildRequires:  git
 BuildRequires:  gettext
 BuildRequires:  xmlto
-Requires:       git-core
+BuildRequires:  python-sphinx
+Requires:       git
 Requires:       PyQt4
 Requires:       python-inotify
 
@@ -64,18 +65,25 @@ update-desktop-database &> /dev/null || :
 %defattr(-,root,root,-)
 %doc COPYRIGHT LICENSE README
 %{_bindir}/git-cola
+%if 0%{?fedora} < 12
 %{_bindir}/git-difftool
-%{_bindir}/git-difftool-helper
+%{_bindir}/git-difftool--helper
+%endif
 %{_datadir}/applications/cola.desktop
-%{_datadir}/cola
-%{_docdir}/cola
+%{_datadir}/git-cola
+%{_docdir}/git-cola
 %{_mandir}/man1/git-cola.1.gz
-%{_mandir}/man1/git-difftool.1.gz
 # For noarch packages: sitelib
 %{python_sitelib}/*
 
 
 %changelog
+* Sun May 24 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.8-1
+- Update to 1.3.8
+- Fix changelog usage of %%
+- BR and R on git instead of git-core
+- Add conditionals on git-difftool
+
 * Mon Mar 23 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.6-1
 - Update to 1.3.6
 
@@ -83,7 +91,7 @@ update-desktop-database &> /dev/null || :
 - Update to 1.3.5.42
 
 * Sat Feb 28 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.5.28-1
-- Added %post and %postun
+- Added %%post and %%postun
 - Use desktop-file-install
 
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.5-5
