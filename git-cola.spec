@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        1.3.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -78,6 +78,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.8-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Sun May 24 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.8-1
 - Update to 1.3.8
 - Fix changelog usage of %%
