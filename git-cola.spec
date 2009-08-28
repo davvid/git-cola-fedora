@@ -1,10 +1,9 @@
-# sitelib for noarch packages, sitearch for others (remove the unneeded one)
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           git-cola
-Version:        1.3.8
-Release:        3%{?dist}
+Version:        1.3.9.14
+Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -73,11 +72,13 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/git-cola
 %{_docdir}/git-cola
 %{_mandir}/man1/git-cola.1.gz
-# For noarch packages: sitelib
 %{python_sitelib}/*
 
 
 %changelog
+* Fri Aug 28 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.9.14-1
+- Update to 1.3.9.14
+
 * Wed Jul 29 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.8-3
 - Try build again for mass rebuild
 
