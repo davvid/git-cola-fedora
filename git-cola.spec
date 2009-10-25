@@ -1,8 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           git-cola
-Version:        1.3.9.14
+Version:        1.4.0
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
@@ -29,12 +28,12 @@ Requires:       python-inotify
 A sweet, carbonated git gui known for its
 sugary flavour and caffeine-inspired features.
 
+
 %prep
 %setup -q -n cola-%{version}
 
 
 %build
-# Remove CFLAGS=... for noarch packages (unneeded)
 %{__python} setup.py build
 make doc
 
@@ -68,6 +67,7 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/git-difftool
 %{_bindir}/git-difftool--helper
 %endif
+%{_libexecdir}/git-cola/ssh-askpass
 %{_datadir}/applications/cola.desktop
 %{_datadir}/git-cola
 %{_docdir}/git-cola
@@ -76,6 +76,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sat Oct 24 2009 Ben Boeckel <MathStuf@gmail.com> 1.4.0-1
+- Update to 1.4.0
+
 * Fri Aug 28 2009 Ben Boeckel <MathStuf@gmail.com> 1.3.9.14-1
 - Update to 1.3.9.14
 
