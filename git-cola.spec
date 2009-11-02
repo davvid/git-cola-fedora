@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.4.0
+Version:        1.4.0.1
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
@@ -9,6 +9,7 @@ Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
 Source0:        http://cola.tuxfamily.org/releases/cola-%{version}-src.tar.gz
+Patch0:         0001-Don-t-ship-forked-simplejson.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -23,6 +24,7 @@ BuildRequires:  python-sphinx
 Requires:       git
 Requires:       PyQt4
 Requires:       python-inotify
+Requires:       python-simplejson
 
 %description
 A sweet, carbonated git gui known for its
@@ -31,6 +33,7 @@ sugary flavour and caffeine-inspired features.
 
 %prep
 %setup -q -n cola-%{version}
+%patch0 -p1
 
 
 %build
@@ -76,6 +79,10 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Mon Nov 02 2009 Ben Boeckel <MathStuf@gmail.com> 1.4.0.1-1
+- Update to 1.4.0.1
+- Add patch to not ship simplejson
+
 * Sat Oct 24 2009 Ben Boeckel <MathStuf@gmail.com> 1.4.0-1
 - Update to 1.4.0
 
