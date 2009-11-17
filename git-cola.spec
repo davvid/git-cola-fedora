@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.4.0.1
+Version:        1.4.0.5
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
@@ -70,7 +70,6 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/git-difftool
 %{_bindir}/git-difftool--helper
 %endif
-%{_libexecdir}/git-cola/ssh-askpass
 %{_datadir}/applications/cola.desktop
 %{_datadir}/git-cola
 %{_docdir}/git-cola
@@ -79,6 +78,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Tue Nov 17 2009 Ben Boeckel <MathStuf@gmail.com> 1.4.0.5-1
+- Update to 1.4.0.5
+
 * Mon Nov 02 2009 Ben Boeckel <MathStuf@gmail.com> 1.4.0.1-1
 - Update to 1.4.0.1
 - Add patch to not ship simplejson
