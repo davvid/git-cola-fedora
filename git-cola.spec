@@ -1,15 +1,14 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.4.0.5
+Version:        1.4.1.2
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
-Source0:        http://cola.tuxfamily.org/releases/cola-%{version}-src.tar.gz
-Patch0:         0001-Don-t-ship-forked-simplejson.patch
+Source0:        http://cola.tuxfamily.org/releases/cola-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -25,6 +24,7 @@ Requires:       git
 Requires:       PyQt4
 Requires:       python-inotify
 Requires:       python-simplejson
+Requires:       python-jsonpickle
 
 %description
 A sweet, carbonated git gui known for its
@@ -33,7 +33,6 @@ sugary flavour and caffeine-inspired features.
 
 %prep
 %setup -q -n cola-%{version}
-%patch0 -p1
 
 
 %build
@@ -43,7 +42,7 @@ make doc
 
 %install
 rm -rf %{buildroot}
-%{__python} setup.py install -O1 --skip-build --root %{buildroot} --prefix=%{_prefix}
+%{__python} setup.py install -O1 --skip-build --root %{buildroot} --prefix=%{_prefix} --standalone
 rm -f %{buildroot}%{_datadir}/applications/cola.desktop
 desktop-file-install --delete-original --dir %{buildroot}%{_datadir}/applications share/applications/cola.desktop
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-doc
@@ -74,10 +73,16 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/git-cola
 %{_docdir}/git-cola
 %{_mandir}/man1/git-cola.1.gz
-%{python_sitelib}/*
+%{python_sitelib}/site-packages/*
 
 
 %changelog
+* Sun Jan 24 2010 Ben Boeckel <MathStuf@gmail.com> - 1.4.1.2-1
+- Update to 1.4.1.2
+
+* Thu Dec 10 2009 Ben Boeckel <MathStuf@gmail.com> - 1.4.1-1
+- Update to 1.4.1
+
 * Tue Nov 17 2009 Ben Boeckel <MathStuf@gmail.com> 1.4.0.5-1
 - Update to 1.4.0.5
 
