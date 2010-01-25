@@ -2,7 +2,7 @@
 
 Name:           git-cola
 Version:        1.4.1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -73,10 +73,13 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/git-cola
 %{_docdir}/git-cola
 %{_mandir}/man1/git-cola.1.gz
-%{python_sitelib}/site-packages/*
+%{python_sitelib}/git_cola-*
 
 
 %changelog
+* Mon Jan 25 2010 Ben Boeckel <MathStuf@gmail.com> - 1.4.1.2-2
+- Fix %%files list
+
 * Sun Jan 24 2010 Ben Boeckel <MathStuf@gmail.com> - 1.4.1.2-1
 - Update to 1.4.1.2
 
