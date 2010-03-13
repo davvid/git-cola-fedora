@@ -2,13 +2,15 @@
 
 Name:           git-cola
 Version:        1.4.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
 Source0:        http://cola.tuxfamily.org/releases/cola-%{version}.tar.gz
+# Backport for Bug #573085
+Patch0:         git-cola-1.4.1.2-docpath.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -33,6 +35,7 @@ sugary flavour and caffeine-inspired features.
 
 %prep
 %setup -q -n cola-%{version}
+%patch0 -p1
 
 
 %build
@@ -77,6 +80,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sat Mar 13 2010 Ben Boeckel <MathStuf@gmail.com> - 1.4.1.2-3
+- Backport patch for documentation path
+
 * Mon Jan 25 2010 Ben Boeckel <MathStuf@gmail.com> - 1.4.1.2-2
 - Fix %%files list
 
