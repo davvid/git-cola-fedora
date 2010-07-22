@@ -2,7 +2,7 @@
 
 Name:           git-cola
 Version:        1.4.1.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -80,6 +80,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 1.4.1.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
+
 * Sat Mar 13 2010 Ben Boeckel <MathStuf@gmail.com> - 1.4.1.2-3
 - Backport patch for documentation path
 
