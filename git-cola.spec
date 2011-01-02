@@ -1,16 +1,14 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.4.1.2
-Release:        5%{?dist}
+Version:        1.4.3
+Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
 Source0:        http://cola.tuxfamily.org/releases/cola-%{version}.tar.gz
-# Backport for Bug #573085
-Patch0:         git-cola-1.4.1.2-docpath.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -35,7 +33,6 @@ sugary flavour and caffeine-inspired features.
 
 %prep
 %setup -q -n cola-%{version}
-%patch0 -p1
 
 
 %build
@@ -68,10 +65,6 @@ update-desktop-database &> /dev/null || :
 %defattr(-,root,root,-)
 %doc COPYRIGHT LICENSE README
 %{_bindir}/git-cola
-%if 0%{?fedora} < 12
-%{_bindir}/git-difftool
-%{_bindir}/git-difftool--helper
-%endif
 %{_datadir}/applications/cola.desktop
 %{_datadir}/git-cola
 %{_docdir}/git-cola
@@ -80,6 +73,11 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sun Jan 02 2010 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3-1
+- Update to 1.4.3, fixes broken Actions widget
+- Drop docpath patch, fixed upstream
+- Drop obsolete conditional for Fedora <= 11
+
 * Fri Jul 30 2010 Thomas Spura <tomspur@fedoraproject.org> - 1.4.1.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
