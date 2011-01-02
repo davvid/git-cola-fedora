@@ -73,7 +73,7 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
-* Sun Jan 02 2010 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3-1
+* Sun Jan 02 2011 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3-1
 - Update to 1.4.3, fixes broken Actions widget
 - Drop docpath patch, fixed upstream
 - Drop obsolete conditional for Fedora <= 11
