@@ -9,6 +9,8 @@ Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
 Source0:        http://cola.tuxfamily.org/releases/cola-%{version}.tar.gz
+# fix installation of translations
+Patch0:         cola-1.4.3-translations.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -33,6 +35,7 @@ sugary flavour and caffeine-inspired features.
 
 %prep
 %setup -q -n cola-%{version}
+%patch0 -p1 -b .translations
 
 
 %build
@@ -47,6 +50,7 @@ rm -f %{buildroot}%{_datadir}/applications/cola.desktop
 desktop-file-install --delete-original --dir %{buildroot}%{_datadir}/applications share/applications/cola.desktop
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
+%find_lang git-cola
 
 
 %clean
@@ -61,7 +65,7 @@ update-desktop-database &> /dev/null || :
 update-desktop-database &> /dev/null || :
 
 
-%files
+%files -f git-cola.lang
 %defattr(-,root,root,-)
 %doc COPYRIGHT LICENSE README
 %{_bindir}/git-cola
@@ -73,10 +77,11 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
-* Sun Jan 02 2011 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3-1
+* Mon Jan 03 2011 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3-1
 - Update to 1.4.3, fixes broken Actions widget
 - Drop docpath patch, fixed upstream
 - Drop obsolete conditional for Fedora <= 11
+- Fix installation of translations
 
 * Fri Jul 30 2010 Thomas Spura <tomspur@fedoraproject.org> - 1.4.1.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
