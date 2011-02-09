@@ -2,7 +2,7 @@
 
 Name:           git-cola
 Version:        1.4.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -77,6 +77,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Mon Jan 03 2011 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3-1
 - Update to 1.4.3, fixes broken Actions widget
 - Drop docpath patch, fixed upstream
