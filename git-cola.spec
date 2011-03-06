@@ -1,16 +1,14 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.4.3
-Release:        2%{?dist}
+Version:        1.4.3.1
+Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
 Source0:        http://cola.tuxfamily.org/releases/cola-%{version}.tar.gz
-# fix installation of translations
-Patch0:         cola-1.4.3-translations.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -35,7 +33,6 @@ sugary flavour and caffeine-inspired features.
 
 %prep
 %setup -q -n cola-%{version}
-%patch0 -p1 -b .translations
 
 
 %build
@@ -77,6 +74,10 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sun Mar 06 2011 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3.1-1
+- Update to 1.4.3.1 (#682518)
+- Drop upstreamed translations patch
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
