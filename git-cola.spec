@@ -2,7 +2,7 @@
 
 Name:           git-cola
 Version:        1.4.3.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -74,6 +74,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.3.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Sun Aug 21 2011 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.4.3.5-1
 - Update to 1.4.3.5 (#732249)
 
