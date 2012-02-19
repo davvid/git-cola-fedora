@@ -1,14 +1,14 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.4.3.5
-Release:        2%{?dist}
+Version:        1.7.5
+Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://cola.tuxfamily.org/
-Source0:        http://cola.tuxfamily.org/releases/cola-%{version}.tar.gz
+Source0:        https://github.com/downloads/git-cola/git-cola/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -32,7 +32,7 @@ sugary flavour and caffeine-inspired features.
 
 
 %prep
-%setup -q -n cola-%{version}
+%setup -q
 
 
 %build
@@ -43,11 +43,14 @@ make doc
 %install
 rm -rf %{buildroot}
 %{__python} setup.py install -O1 --skip-build --root %{buildroot} --prefix=%{_prefix} --standalone
-rm -f %{buildroot}%{_datadir}/applications/cola.desktop
-desktop-file-install --delete-original --dir %{buildroot}%{_datadir}/applications share/applications/cola.desktop
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
 %find_lang git-cola
+
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
 
 
 %clean
@@ -66,14 +69,20 @@ update-desktop-database &> /dev/null || :
 %defattr(-,root,root,-)
 %doc COPYRIGHT LICENSE README
 %{_bindir}/git-cola
-%{_datadir}/applications/cola.desktop
+%{_bindir}/git-dag
+%{_datadir}/applications/git-cola.desktop
+%{_datadir}/applications/git-dag.desktop
 %{_datadir}/git-cola
 %{_docdir}/git-cola
 %{_mandir}/man1/git-cola.1.gz
+%{_mandir}/man1/git-dag.1.gz
 %{python_sitelib}/git_cola-*
 
 
 %changelog
+* Sun Feb 19 2012 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.7.5-1
+- Update to 1.7.5 (#789309)
+
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.3.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
