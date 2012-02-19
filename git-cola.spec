@@ -42,7 +42,7 @@ make doc
 
 %install
 rm -rf %{buildroot}
-%{__python} setup.py install -O1 --skip-build --root %{buildroot} --prefix=%{_prefix} --standalone
+%{__python} setup.py install -O1 --skip-build --root %{buildroot} --prefix=%{_prefix}
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
 %find_lang git-cola
