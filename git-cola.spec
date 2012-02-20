@@ -67,7 +67,7 @@ update-desktop-database &> /dev/null || :
 
 %files -f git-cola.lang
 %defattr(-,root,root,-)
-%doc COPYRIGHT LICENSE README
+%doc COPYING COPYRIGHT README.md
 %{_bindir}/git-cola
 %{_bindir}/git-dag
 %{_datadir}/applications/git-cola.desktop
@@ -80,7 +80,7 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
-* Sun Feb 19 2012 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.7.5-1
+* Mon Feb 20 2012 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.7.5-1
 - Update to 1.7.5 (#789309)
 
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.3.5-2
