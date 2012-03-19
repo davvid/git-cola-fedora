@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.7.5
+Version:        1.7.6
 Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
@@ -80,6 +80,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Mon Mar 19 2012 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.7.6-1
+- Update to 1.7.6 (#804407)
+
 * Mon Feb 20 2012 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.7.5-1
 - Update to 1.7.5 (#789309)
 
