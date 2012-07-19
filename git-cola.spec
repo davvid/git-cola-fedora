@@ -2,7 +2,7 @@
 
 Name:           git-cola
 Version:        1.7.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -80,6 +80,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.7.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Tue May 08 2012 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.7.7-1
 - Update to 1.7.7 (#819165)
 
