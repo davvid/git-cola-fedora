@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           git-cola
-Version:        1.7.7
-Release:        2%{?dist}
+Version:        1.8.0
+Release:        1%{?dist}
 Summary:        A highly caffeinated git gui
 
 Group:          Development/Tools
@@ -80,6 +80,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Wed Sep 26 2012 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.8.0-1
+- Update to 1.8.0 (#849593)
+
 * Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.7.7-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
