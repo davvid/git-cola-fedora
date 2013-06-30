@@ -1,85 +1,67 @@
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-
 Name:           git-cola
-Version:        1.8.1
-Release:        2%{?dist}
-Summary:        A highly caffeinated git gui
-
-Group:          Development/Tools
+Version:        1.8.3
+Release:        1%{?dist}
+Summary:        A sleek and powerful git GUI
 License:        GPLv2+
-URL:            http://cola.tuxfamily.org/
-Source0:        https://github.com/downloads/git-cola/git-cola/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
+URL:            http://git-cola.github.io
+Source0:        http://git-cola.github.io/releases/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  desktop-file-utils
-BuildRequires:  python-devel
-BuildRequires:  PyQt4-devel
 BuildRequires:  asciidoc
-BuildRequires:  git
+BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
-BuildRequires:  xmlto
+BuildRequires:  git
+BuildRequires:  PyQt4-devel
+BuildRequires:  python2-devel
 BuildRequires:  python-sphinx
+BuildRequires:  xmlto
 Requires:       git
 Requires:       PyQt4
 Requires:       python-inotify
-Requires:       python-simplejson
 Requires:       python-jsonpickle
+Requires:       python-simplejson
 
 %description
-A sweet, carbonated git gui known for its
-sugary flavour and caffeine-inspired features.
-
+git-cola is a powerful git GUI with a slick and intuitive user interface.
 
 %prep
 %setup -q
 
-
 %build
-%{__python} setup.py build
+export PYTHON="%{__python}"
+make %{?_smp_mflags}
 make doc
 
-
 %install
-rm -rf %{buildroot}
-%{__python} setup.py install -O1 --skip-build --root %{buildroot} --prefix=%{_prefix}
+make DESTDIR=%{buildroot} prefix=%{_prefix} install
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
-%find_lang git-cola
 
+%find_lang %{name}
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
 
-
-%clean
-rm -rf %{buildroot}
-
-
 %post
 update-desktop-database &> /dev/null || :
-
 
 %postun
 update-desktop-database &> /dev/null || :
 
-
-%files -f git-cola.lang
-%defattr(-,root,root,-)
+%files -f %{name}.lang
 %doc COPYING COPYRIGHT README.md
-%{_bindir}/git-cola
-%{_bindir}/git-dag
-%{_datadir}/applications/git-cola.desktop
-%{_datadir}/applications/git-dag.desktop
-%{_datadir}/git-cola
-%{_docdir}/git-cola
-%{_mandir}/man1/git-cola.1.gz
-%{_mandir}/man1/git-dag.1.gz
-%{python_sitelib}/git_cola-*
-
+%{_bindir}/cola
+%{_bindir}/git-*
+%{_datadir}/applications/git*.desktop
+%{_datadir}/%{name}/
+%{_docdir}/%{name}/
+%{_mandir}/man1/git*.1.gz
 
 %changelog
+* Sun Jun 30 2013 Christopher Meng <rpm@cicku.me> - 1.8.3-1
+- Update to 1.8.3.
+- Cleanup the spec.
+
 * Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
