@@ -1,6 +1,6 @@
 Name:           git-cola
 Version:        1.8.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -58,6 +58,9 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1.gz
 
 %changelog
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Sun Jun 30 2013 Christopher Meng <rpm@cicku.me> - 1.8.3-1
 - Update to 1.8.3.
 - Cleanup the spec.
