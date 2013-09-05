@@ -59,7 +59,7 @@ update-desktop-database &> /dev/null || :
 
 %changelog
 * Thu Sep 05 2013 Christopher Meng <rpm@cicku.me> - 1.8.4-1
-- Update to 1.8.4.
+- Update to 1.8.4(BZ#1003317) with fix for BZ#1001200/BZ#1001200.
 
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
