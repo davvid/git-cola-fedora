@@ -1,5 +1,5 @@
 Name:           git-cola
-Version:        1.8.5
+Version:        1.9.1
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
@@ -27,7 +27,7 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 %setup -q
 
 %build
-export PYTHON="%{__python}"
+export PYTHON="%{__python2}"
 make %{?_smp_mflags}
 make doc
 
@@ -55,9 +55,12 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/applications/git*.desktop
 %{_datadir}/%{name}/
 %{_docdir}/%{name}/
-%{_mandir}/man1/git*.1.gz
+%{_mandir}/man1/git*.1*
 
 %changelog
+* Tue Nov 12 2013 Christopher Meng <rpm@cicku.me> - 1.9.1-1
+- Update to 1.9.1 with fix for BZ#1028854.
+
 * Wed Sep 25 2013 Christopher Meng <rpm@cicku.me> - 1.8.5-1
 - Update to 1.8.5(BZ#1011796) with fix for BZ#886826.
 
