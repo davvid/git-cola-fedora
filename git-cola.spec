@@ -1,5 +1,5 @@
 Name:           git-cola
-Version:        1.9.1
+Version:        1.9.2
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
@@ -58,6 +58,9 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Thu Nov 28 2013 Christopher Meng <rpm@cicku.me> - 1.9.2-1
+- Update to 1.9.2 with fix for BZ#1034778.
+
 * Tue Nov 12 2013 Christopher Meng <rpm@cicku.me> - 1.9.1-1
 - Update to 1.9.1 with fix for BZ#1028854.
 
