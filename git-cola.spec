@@ -5,7 +5,7 @@ Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
 # URL kludge because the v1.9.3.tar.gz link delivers git-cola-1.9.3.tar.gz
-Source0:        https://github.com/git-cola/git-cola/archive/v%{version}.tar.gz#%{name}-%{version}.tar.gz
+Source0:        https://github.com/git-cola/git-cola/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  asciidoc
 BuildRequires:  desktop-file-utils
