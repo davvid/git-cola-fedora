@@ -1,10 +1,11 @@
 Name:           git-cola
-Version:        1.9.2
+Version:        1.9.3
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
-Source0:        http://git-cola.github.io/releases/%{name}-%{version}.tar.gz
+# URL kludge because the v1.9.3.tar.gz link delivers git-cola-1.9.3.tar.gz
+Source0:        https://github.com/git-cola/git-cola/archive/v%{version}.tar.gz#%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  asciidoc
 BuildRequires:  desktop-file-utils
@@ -58,6 +59,9 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Thu Dec 12 2013 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.9.3-1
+- Update to 1.9.3 (#1040157)
+
 * Thu Nov 28 2013 Christopher Meng <rpm@cicku.me> - 1.9.2-1
 - Update to 1.9.2 with fix for BZ#1034778.
 
