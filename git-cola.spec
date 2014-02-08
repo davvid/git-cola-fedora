@@ -1,5 +1,5 @@
 Name:           git-cola
-Version:        1.9.3
+Version:        1.9.4
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
@@ -40,8 +40,7 @@ make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
 %find_lang %{name}
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/git*.desktop
 
 %post
 update-desktop-database &> /dev/null || :
@@ -59,6 +58,9 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Fri Feb 07 2014 Christopher Meng <rpm@cicku.me> - 1.9.4-1
+- Update to 1.9.4
+
 * Thu Dec 12 2013 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.9.3-1
 - Update to 1.9.3 (#1040157)
 
