@@ -40,7 +40,9 @@ make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
 %find_lang %{name}
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/git*.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola-folder-handler.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
 
 %post
 update-desktop-database &> /dev/null || :
