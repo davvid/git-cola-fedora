@@ -1,10 +1,9 @@
 Name:           git-cola
 Version:        1.9.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
-# URL kludge because the v1.9.3.tar.gz link delivers git-cola-1.9.3.tar.gz
 Source0:        https://github.com/git-cola/git-cola/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  asciidoc
@@ -18,7 +17,6 @@ BuildRequires:  xmlto
 Requires:       git
 Requires:       PyQt4
 Requires:       python-inotify
-Requires:       python-jsonpickle
 Requires:       python-simplejson
 
 %description
@@ -60,6 +58,9 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Sat Feb 15 2014 Christopher Meng <rpm@cicku.me> - 1.9.4-2
+- Remove unneeded dependency.
+
 * Fri Feb 07 2014 Christopher Meng <rpm@cicku.me> - 1.9.4-1
 - Update to 1.9.4
 
