@@ -1,6 +1,6 @@
 Name:           git-cola
-Version:        1.9.4
-Release:        2%{?dist}
+Version:        2.0.0
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -11,6 +11,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  git
 BuildRequires:  PyQt4-devel
+# Since version 2.0.0, python3 is support, I will port this package
+# to python3 default from F22.  -- cicku
 BuildRequires:  python2-devel
 BuildRequires:  python-sphinx
 BuildRequires:  xmlto
@@ -58,6 +60,9 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Wed Feb 26 2014 Christopher Meng <rpm@cicku.me> - 2.0.0-1
+- Update to 2.0.0
+
 * Sat Feb 15 2014 Christopher Meng <rpm@cicku.me> - 1.9.4-2
 - Remove unneeded dependency.
 
