@@ -1,12 +1,11 @@
 Name:           git-cola
-Version:        2.0.2
+Version:        2.0.3
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
 Source0:        https://github.com/git-cola/git-cola/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  asciidoc
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  git
@@ -60,6 +59,10 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Sat May 31 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.3-1
+- Update to 2.0.3 (#1101185)
+- Drop BR asciidoc, not used anymore (since 2.0.2)
+
 * Wed Apr 23 2014 Christopher Meng <rpm@cicku.me> - 2.0.2-1
 - Update to 2.0.2
 
