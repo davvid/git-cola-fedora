@@ -1,5 +1,5 @@
 Name:           git-cola
-Version:        2.0.4
+Version:        2.0.5
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
@@ -59,6 +59,9 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Sun Aug 03 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.5-1
+- Update to 2.0.5 (#1124151)
+
 * Thu Jun 26 2014 Christopher Meng <rpm@cicku.me> - 2.0.4-1
 - Update to 2.0.4
 
