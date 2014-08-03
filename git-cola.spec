@@ -62,6 +62,9 @@ update-desktop-database &> /dev/null || :
 * Thu Jun 26 2014 Christopher Meng <rpm@cicku.me> - 2.0.4-1
 - Update to 2.0.4
 
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Sat May 31 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.3-1
 - Update to 2.0.3 (#1101185)
 - Drop BR asciidoc, not used anymore (since 2.0.2)
