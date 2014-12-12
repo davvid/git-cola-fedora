@@ -59,7 +59,7 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
-* Sun Dec 12 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.8-1
+* Fri Dec 12 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.8-1
 - Update to 2.0.8 (#1136235, also fixes #1171612)
 - Use less hackish GitHub Source0 URL
 
