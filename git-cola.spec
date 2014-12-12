@@ -1,10 +1,10 @@
 Name:           git-cola
-Version:        2.0.5
+Version:        2.0.8
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
-Source0:        https://github.com/git-cola/git-cola/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/git-cola/git-cola/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
@@ -59,6 +59,10 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Sun Dec 12 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.8-1
+- Update to 2.0.8 (#1136235, also fixes #1171612)
+- Use less hackish GitHub Source0 URL
+
 * Sun Aug 03 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.5-1
 - Update to 2.0.5 (#1124151)
 
