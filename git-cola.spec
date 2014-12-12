@@ -19,6 +19,7 @@ Requires:       git
 Requires:       PyQt4
 Requires:       python-inotify
 Requires:       python-simplejson
+Requires:       hicolor-icon-theme
 
 %description
 git-cola is a powerful git GUI with a slick and intuitive user interface.
@@ -48,6 +49,13 @@ update-desktop-database &> /dev/null || :
 
 %postun
 update-desktop-database &> /dev/null || :
+if [ $1 -eq 0 ] ; then
+    /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
+    /usr/bin/gtk-update-icon-cache -f %{_datadir}/icons/hicolor &>/dev/null || :
+fi
+
+%posttrans
+/usr/bin/gtk-update-icon-cache -f %{_datadir}/icons/hicolor &>/dev/null || :
 
 %files -f %{name}.lang
 %doc COPYING COPYRIGHT README.md
@@ -55,6 +63,7 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/git-*
 %{_datadir}/applications/git*.desktop
 %{_datadir}/%{name}/
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_docdir}/%{name}/
 %{_mandir}/man1/git*.1*
 
@@ -62,6 +71,7 @@ update-desktop-database &> /dev/null || :
 * Fri Dec 12 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.8-1
 - Update to 2.0.8 (#1136235, also fixes #1171612)
 - Use less hackish GitHub Source0 URL
+- Add new icon to file list, icon scriptlets, Requires: hicolor-icon-theme
 
 * Sun Aug 03 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.5-1
 - Update to 2.0.5 (#1124151)
