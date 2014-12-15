@@ -1,6 +1,10 @@
+%if 0%{?fedora} > 21
+%global python3 1
+%endif
+
 Name:           git-cola
 Version:        2.0.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -9,16 +13,29 @@ BuildArch:      noarch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  git
+BuildRequires:  xmlto
+%if 0%{?python3}
+BuildRequires:  python3-PyQt4-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-sphinx
+# Set the Python version for brp-python-bytecompile (see the Python guidelines).
+# We also use this to set the PYTHON environment variable for the makefile.
+%global __python %{__python3}
+Requires:       python3-PyQt4
+Requires:       python3-inotify
+Requires:       python3-simplejson
+%else
 BuildRequires:  PyQt4-devel
-# Since version 2.0.0, python3 is supported, I will port this package
-# to python3 default from F22.  -- cicku
 BuildRequires:  python2-devel
 BuildRequires:  python-sphinx
-BuildRequires:  xmlto
-Requires:       git
+# Set the Python version for brp-python-bytecompile (see the Python guidelines).
+# We also use this to set the PYTHON environment variable for the makefile.
+%global __python %{__python2}
 Requires:       PyQt4
 Requires:       python-inotify
 Requires:       python-simplejson
+%endif
+Requires:       git
 Requires:       hicolor-icon-theme
 
 %description
@@ -28,7 +45,7 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 %setup -q
 
 %build
-export PYTHON="%{__python2}"
+export PYTHON="%{__python}"
 make %{?_smp_mflags}
 make doc
 
@@ -68,6 +85,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Mon Dec 15 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.8-2
+- Build against Python 3 on Fedora >= 22
+
 * Fri Dec 12 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.8-1
 - Update to 2.0.8 (#1136235, also fixes #1171612)
 - Use less hackish GitHub Source0 URL
