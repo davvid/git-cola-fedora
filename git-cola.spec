@@ -52,7 +52,7 @@ find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/d
 %build
 %global makeopts PYTHON="%{__python}" %{?sphinxbuild:SPHINXBUILD="%{sphinxbuild}"}
 make %{?_smp_mflags} %{makeopts}
-make PYTHON="%{__python}" %{makeopts} doc
+make %{makeopts} doc
 
 %install
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install
