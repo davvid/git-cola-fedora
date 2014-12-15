@@ -43,6 +43,10 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 
 %prep
 %setup -q
+%if 0%{?python3}
+# fix #!/usr/bin/env/python to #!/usr/bin/env/python3 everywhere
+find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/env\ python3Xg {}" \;
+%endif
 
 %build
 export PYTHON="%{__python}"
