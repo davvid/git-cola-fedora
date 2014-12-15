@@ -18,8 +18,9 @@ BuildRequires:  xmlto
 BuildRequires:  python3-PyQt4-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-sphinx
+%global sphinxbuild sphinx-build-3
 # Set the Python version for brp-python-bytecompile (see the Python guidelines).
-# We also use this to set the PYTHON environment variable for the makefile.
+# We also use this to set the PYTHON makefile variable.
 %global __python %{__python3}
 Requires:       python3-PyQt4
 Requires:       python3-inotify
@@ -29,7 +30,7 @@ BuildRequires:  PyQt4-devel
 BuildRequires:  python2-devel
 BuildRequires:  python-sphinx
 # Set the Python version for brp-python-bytecompile (see the Python guidelines).
-# We also use this to set the PYTHON environment variable for the makefile.
+# We also use this to set the PYTHON makefile variable.
 %global __python %{__python2}
 Requires:       PyQt4
 Requires:       python-inotify
@@ -49,9 +50,8 @@ find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/d
 %endif
 
 %build
-export PYTHON="%{__python}"
-make %{?_smp_mflags}
-make doc
+make %{?_smp_mflags} PYTHON="%{__python}"
+make doc PYTHON="%{__python}" %{?sphinxbuild:SPHINXBUILD="%{sphinxbuild}"}
 
 %install
 make DESTDIR=%{buildroot} prefix=%{_prefix} install
