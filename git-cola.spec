@@ -50,13 +50,14 @@ find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/d
 %endif
 
 %build
-make %{?_smp_mflags} PYTHON="%{__python}"
-make doc PYTHON="%{__python}" %{?sphinxbuild:SPHINXBUILD="%{sphinxbuild}"}
+%global makeopts PYTHON="%{__python}" %{?sphinxbuild:SPHINXBUILD="%{sphinxbuild}"}
+make %{?_smp_mflags} %{makeopts}
+make PYTHON="%{__python}" %{makeopts} doc
 
 %install
-make DESTDIR=%{buildroot} prefix=%{_prefix} PYTHON="%{__python}" install
-make DESTDIR=%{buildroot} prefix=%{_prefix} PYTHON="%{__python}" install-doc
-make DESTDIR=%{buildroot} prefix=%{_prefix} PYTHON="%{__python}" install-html
+make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install
+make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-doc
+make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
 
 %find_lang %{name}
 
