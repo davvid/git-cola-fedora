@@ -54,9 +54,9 @@ make %{?_smp_mflags} PYTHON="%{__python}"
 make doc PYTHON="%{__python}" %{?sphinxbuild:SPHINXBUILD="%{sphinxbuild}"}
 
 %install
-make DESTDIR=%{buildroot} prefix=%{_prefix} install
-make DESTDIR=%{buildroot} prefix=%{_prefix} install-doc
-make DESTDIR=%{buildroot} prefix=%{_prefix} install-html
+make DESTDIR=%{buildroot} prefix=%{_prefix} PYTHON="%{__python}" install
+make DESTDIR=%{buildroot} prefix=%{_prefix} PYTHON="%{__python}" install-doc
+make DESTDIR=%{buildroot} prefix=%{_prefix} PYTHON="%{__python}" install-html
 
 %find_lang %{name}
 
