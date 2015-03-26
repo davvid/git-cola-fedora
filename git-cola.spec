@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.0.8
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -59,6 +59,20 @@ make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
 
+# Merge applications into one software center item
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/appdata
+cat > $RPM_BUILD_ROOT%{_datadir}/appdata/git-dag.appdata.xml <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Richard Hughes <richard@hughsie.com> -->
+<component type="desktop">
+  <metadata_license>CC0-1.0</metadata_license>
+  <id>git-dag.desktop</id>
+  <metadata>
+    <value key="X-Merge-With-Parent">git-cola.desktop</value>
+  </metadata>
+</component>
+EOF
+
 %find_lang %{name}
 
 %check
@@ -83,6 +97,7 @@ fi
 %doc COPYING COPYRIGHT README.md
 %{_bindir}/cola
 %{_bindir}/git-*
+%{_datadir}/appdata/git*.appdata.xml
 %{_datadir}/applications/git*.desktop
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -90,6 +105,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Thu Mar 26 2015 Richard Hughes <rhughes@redhat.com> - 2.0.8-3
+- Add an AppData file for the software center
+
 * Mon Dec 15 2014 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.0.8-2
 - Build against Python 3 on Fedora >= 22
 
