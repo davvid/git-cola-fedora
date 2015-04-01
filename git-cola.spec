@@ -3,8 +3,8 @@
 %endif
 
 Name:           git-cola
-Version:        2.0.8
-Release:        3%{?dist}
+Version:        2.1.2
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -60,8 +60,8 @@ make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
 
 # Merge applications into one software center item
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/appdata
-cat > $RPM_BUILD_ROOT%{_datadir}/appdata/git-dag.appdata.xml <<EOF
+mkdir -p %{buildroot}%{_datadir}/appdata
+cat > %{buildroot}%{_datadir}/appdata/git-dag.appdata.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2014 Richard Hughes <richard@hughsie.com> -->
 <component type="desktop">
@@ -105,6 +105,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Wed Apr 01 2015 Christopher Meng <rpm@cicku.me> - 2.1.2-1
+- Update to 2.1.2
+
 * Thu Mar 26 2015 Richard Hughes <rhughes@redhat.com> - 2.0.8-3
 - Add an AppData file for the software center
 
