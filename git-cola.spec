@@ -101,7 +101,6 @@ fi
 %{_datadir}/applications/git*.desktop
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_docdir}/%{name}/
 %{_mandir}/man1/git*.1*
 
 %changelog
