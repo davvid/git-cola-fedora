@@ -3,8 +3,8 @@
 %endif
 
 Name:           git-cola
-Version:        2.1.2
-Release:        2%{?dist}
+Version:        2.3
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -105,6 +105,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Tue Aug 11 2015 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.3-1
+- Update to 2.3 (#1231812)
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
