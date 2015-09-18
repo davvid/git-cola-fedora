@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -59,20 +59,6 @@ make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
 
-# Merge applications into one software center item
-mkdir -p %{buildroot}%{_datadir}/appdata
-cat > %{buildroot}%{_datadir}/appdata/git-dag.appdata.xml <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 Richard Hughes <richard@hughsie.com> -->
-<component type="desktop">
-  <metadata_license>CC0-1.0</metadata_license>
-  <id>git-dag.desktop</id>
-  <metadata>
-    <value key="X-Merge-With-Parent">git-cola.desktop</value>
-  </metadata>
-</component>
-EOF
-
 %find_lang %{name}
 
 %check
@@ -97,7 +83,6 @@ fi
 %doc COPYING COPYRIGHT README.md
 %{_bindir}/cola
 %{_bindir}/git-*
-%{_datadir}/appdata/git*.appdata.xml
 %{_datadir}/applications/git*.desktop
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -105,6 +90,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Fri Sep 18 2015 Richard Hughes <rhughes@redhat.com> - 2.3-2
+- Remove no longer required AppData file
+
 * Tue Aug 11 2015 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.3-1
 - Update to 2.3 (#1231812)
 
