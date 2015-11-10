@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -90,6 +90,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Fri Sep 18 2015 Richard Hughes <rhughes@redhat.com> - 2.3-2
 - Remove no longer required AppData file
 
