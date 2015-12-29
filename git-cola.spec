@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -24,7 +24,6 @@ BuildRequires:  python3-sphinx
 %global __python %{__python3}
 Requires:       python3-PyQt4
 Requires:       python3-inotify
-Requires:       python3-simplejson
 %else
 BuildRequires:  PyQt4-devel
 BuildRequires:  python2-devel
@@ -34,7 +33,6 @@ BuildRequires:  python-sphinx
 %global __python %{__python2}
 Requires:       PyQt4
 Requires:       python-inotify
-Requires:       python-simplejson
 %endif
 Requires:       git
 Requires:       hicolor-icon-theme
@@ -90,6 +88,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Tue Dec 29 2015 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.3-4
+- Drop obsolete (since 2.0.0) dependency on python*-simplejson (#1294541)
+
 * Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.3-3
 - Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
 
