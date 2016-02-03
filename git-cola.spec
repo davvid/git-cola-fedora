@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -88,6 +88,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.3-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Tue Dec 29 2015 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.3-4
 - Drop obsolete (since 2.0.0) dependency on python*-simplejson (#1294541)
 
