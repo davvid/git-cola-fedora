@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            http://git-cola.github.io
@@ -23,6 +23,7 @@ BuildRequires:  python3-sphinx
 # We also use this to set the PYTHON makefile variable.
 %global __python %{__python3}
 Requires:       python3-PyQt4
+Requires:       python3-PyQt4-webkit
 Requires:       python3-inotify
 %else
 BuildRequires:  PyQt4-devel
@@ -32,6 +33,7 @@ BuildRequires:  python-sphinx
 # We also use this to set the PYTHON makefile variable.
 %global __python %{__python2}
 Requires:       PyQt4
+Requires:       PyQt4-webkit
 Requires:       python-inotify
 %endif
 Requires:       git
@@ -88,6 +90,9 @@ fi
 %{_mandir}/man1/git*.1*
 
 %changelog
+* Wed Mar 02 2016 Rex Dieter <rdieter@fedoraproject.org> 2.3-6
+- Requires: PyQt4-webkit
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.3-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
