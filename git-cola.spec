@@ -3,13 +3,16 @@
 %endif
 
 Name:           git-cola
-Version:        2.3
-Release:        6%{?dist}
+Version:        2.6
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
+
 License:        GPLv2+
 URL:            http://git-cola.github.io
 Source0:        https://github.com/git-cola/git-cola/archive/v%{version}/%{name}-%{version}.tar.gz
+
 BuildArch:      noarch
+
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  git
@@ -39,8 +42,10 @@ Requires:       python-inotify
 Requires:       git
 Requires:       hicolor-icon-theme
 
+
 %description
 git-cola is a powerful git GUI with a slick and intuitive user interface.
+
 
 %prep
 %setup -q
@@ -49,25 +54,29 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/env\ python3Xg {}" \;
 %endif
 
+
 %build
 %global makeopts PYTHON="%{__python}" %{?sphinxbuild:SPHINXBUILD="%{sphinxbuild}"}
 make %{?_smp_mflags} %{makeopts}
 make %{makeopts} doc
 
+
 %install
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
-
 %find_lang %{name}
+
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola-folder-handler.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
 
+
 %post
 update-desktop-database &> /dev/null || :
+
 
 %postun
 update-desktop-database &> /dev/null || :
@@ -76,8 +85,10 @@ if [ $1 -eq 0 ] ; then
     /usr/bin/gtk-update-icon-cache -f %{_datadir}/icons/hicolor &>/dev/null || :
 fi
 
+
 %posttrans
 /usr/bin/gtk-update-icon-cache -f %{_datadir}/icons/hicolor &>/dev/null || :
+
 
 %files -f %{name}.lang
 %doc COPYING COPYRIGHT README.md
@@ -89,7 +100,11 @@ fi
 %{_docdir}/%{name}/
 %{_mandir}/man1/git*.1*
 
+
 %changelog
+* Fri May 06 2016 Nikos Roussos <comzeradd@fedoraproject.org> - 2.6-1
+- Update to 2.6
+
 * Wed Mar 02 2016 Rex Dieter <rdieter@fedoraproject.org> 2.3-6
 - Requires: PyQt4-webkit
 
