@@ -3,7 +3,7 @@
 %endif
 
 Name:           git-cola
-Version:        2.7
+Version:        2.8
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 
@@ -102,6 +102,9 @@ fi
 
 
 %changelog
+* Tue Aug 30 2016 Oliver Haessler <oliver@redhat.com> - 2.8-1
+- Update to 2.8
+
 * Mon Aug 01 2016 Oliver Haessler <oliver@redhat.com> - 2.7-1
 - Update to 2.7
 
