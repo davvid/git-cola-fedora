@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.9.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -102,6 +102,9 @@ fi
 
 
 %changelog
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 2.9.1-2
+- Rebuild for Python 3.6
+
 * Thu Nov 24 2016 Oliver Haessler <oliver@redhat.com> - 2.9.1-1
 - Update to 2.9.1
 
