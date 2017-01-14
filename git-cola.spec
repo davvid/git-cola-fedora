@@ -105,6 +105,9 @@ fi
 * Sat Jan 14 2017 Oliver Haessler <oliver@redhat.com> - 2.10-1
 - Update to 2.10
 
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 2.9.1-2
+- Rebuild for Python 3.6
+
 * Thu Nov 24 2016 Oliver Haessler <oliver@redhat.com> - 2.9.1-1
 - Update to 2.9.1
 
