@@ -17,6 +17,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  git
 BuildRequires:  xmlto
+BuildRequires:  libappstream-glib
 %if 0%{?python3}
 BuildRequires:  python3-PyQt4-devel
 BuildRequires:  python3-devel
@@ -72,7 +73,7 @@ make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola-folder-handler.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
-
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
 
 %post
 update-desktop-database &> /dev/null || :
@@ -95,6 +96,7 @@ fi
 %{_bindir}/cola
 %{_bindir}/git-*
 %{_datadir}/applications/git*.desktop
+%{_datadir}/appdata/git*.appdata.xml
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_docdir}/%{name}/
