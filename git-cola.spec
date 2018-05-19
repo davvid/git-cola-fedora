@@ -18,6 +18,7 @@ BuildRequires:  gettext
 BuildRequires:  git
 BuildRequires:  xmlto
 BuildRequires:  libappstream-glib
+BuildRequires:  rsync
 %if 0%{?python3}
 BuildRequires:  python3-PyQt4-devel
 BuildRequires:  python3-devel
