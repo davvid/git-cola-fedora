@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        2.10
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -104,6 +104,9 @@ fi
 
 
 %changelog
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.10-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 2.10-5
 - Rebuilt for Python 3.7
 
