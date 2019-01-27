@@ -80,22 +80,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
 
-%post
-update-desktop-database &> /dev/null || :
-
-
-%postun
-update-desktop-database &> /dev/null || :
-if [ $1 -eq 0 ] ; then
-    /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-    /usr/bin/gtk-update-icon-cache -f %{_datadir}/icons/hicolor &>/dev/null || :
-fi
-
-
-%posttrans
-/usr/bin/gtk-update-icon-cache -f %{_datadir}/icons/hicolor &>/dev/null || :
-
-
 %files -f %{name}.lang
 %doc COPYING COPYRIGHT README.md
 %{_bindir}/cola
