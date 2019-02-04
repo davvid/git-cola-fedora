@@ -7,8 +7,8 @@
 %endif
 
 Name:           git-cola
-Version:        3.2
-Release:        2%{?dist}
+Version:        3.3
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -93,6 +93,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Mon Feb 04 2019 Oliver Haessler <oliver@redhat.com> - 3.3-1
+- Update to 3.3
+
 * Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
