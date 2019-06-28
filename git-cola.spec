@@ -7,7 +7,7 @@
 %endif
 
 Name:           git-cola
-Version:        3.3
+Version:        3.4
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 
@@ -93,6 +93,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Fri Jun 28 2019 Oliver Haessler <oliver@redhat.com> - 3.4-1
+- Update to 3.4
+
 * Mon Feb 04 2019 Oliver Haessler <oliver@redhat.com> - 3.3-1
 - Update to 3.3
 
