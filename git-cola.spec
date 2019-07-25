@@ -8,7 +8,7 @@
 
 Name:           git-cola
 Version:        3.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -93,6 +93,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Fri Jun 28 2019 Oliver Haessler <oliver@redhat.com> - 3.4-1
 - Update to 3.4
 
