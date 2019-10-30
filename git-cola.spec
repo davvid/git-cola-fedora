@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        3.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -19,11 +19,10 @@ BuildRequires:  git
 BuildRequires:  xmlto
 BuildRequires:  libappstream-glib
 BuildRequires:  rsync
-BuildRequires:  python3-PyQt4-devel
+BuildRequires:  python3-pyside2-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-sphinx
-Requires:       python3-PyQt4
-Requires:       python3-PyQt4-webkit
+Requires:       python3-pyside2
 Requires:       python3-inotify
 Requires:       git
 Requires:       hicolor-icon-theme
@@ -71,6 +70,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Tue Oct 29 2019 Ben Boeckel <mathstuf@gmail.com> - 3.4-3
+- Use PyQt5
+
 * Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.4-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
