@@ -2,10 +2,6 @@
 # https://fedoraproject.org/wiki/Changes/No_more_automagic_Python_bytecompilation_phase_2
 %global _python_bytecompile_extra 1
 
-%if 0%{?fedora} > 21
-%global python3 1
-%endif
-
 Name:           git-cola
 Version:        3.4
 Release:        2%{?dist}
@@ -23,28 +19,12 @@ BuildRequires:  git
 BuildRequires:  xmlto
 BuildRequires:  libappstream-glib
 BuildRequires:  rsync
-%if 0%{?python3}
 BuildRequires:  python3-PyQt4-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-sphinx
-%global sphinxbuild sphinx-build-3
-# Set the Python version for brp-python-bytecompile (see the Python guidelines).
-# We also use this to set the PYTHON makefile variable.
-%global __python %{__python3}
 Requires:       python3-PyQt4
 Requires:       python3-PyQt4-webkit
 Requires:       python3-inotify
-%else
-BuildRequires:  PyQt4-devel
-BuildRequires:  python2-devel
-BuildRequires:  python-sphinx
-# Set the Python version for brp-python-bytecompile (see the Python guidelines).
-# We also use this to set the PYTHON makefile variable.
-%global __python %{__python2}
-Requires:       PyQt4
-Requires:       PyQt4-webkit
-Requires:       python-inotify
-%endif
 Requires:       git
 Requires:       hicolor-icon-theme
 
@@ -55,14 +35,12 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 
 %prep
 %setup -q
-%if 0%{?python3}
 # fix #!/usr/bin/env/python to #!/usr/bin/env/python3 everywhere
 find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/env\ python3Xg {}" \;
-%endif
 
 
 %build
-%global makeopts PYTHON="%{__python}" %{?sphinxbuild:SPHINXBUILD="%{sphinxbuild}"}
+%global makeopts PYTHON="%{__python3}" SPHINXBUILD=sphinx-build-3
 make %{?_smp_mflags} %{makeopts}
 make %{makeopts} doc
 
