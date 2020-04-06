@@ -8,7 +8,7 @@ Release:        4%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
-URL:            http://git-cola.github.io
+URL:            https://git-cola.github.io
 Source0:        https://github.com/git-cola/git-cola/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
@@ -34,8 +34,8 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 
 %prep
 %setup -q
-# fix #!/usr/bin/env/python to #!/usr/bin/env/python3 everywhere
-find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/env\ python3Xg {}" \;
+# fix #!/usr/bin/env python to #!/usr/bin/python3 everywhere
+find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/python3Xg {}" \;
 
 
 %build
@@ -70,7 +70,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
-* Sat Feb 15 2019 David Aguilar <davvid@gmail.com> - 3.4-4
+* Sat Feb 15 2020 David Aguilar <davvid@gmail.com> - 3.4-4
 - Use python3-pyqt5 instead of pyside2.
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.4-3
