@@ -3,8 +3,8 @@
 %global _python_bytecompile_extra 1
 
 Name:           git-cola
-Version:        3.4
-Release:        4%{?dist}
+Version:        3.6
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
