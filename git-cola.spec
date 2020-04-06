@@ -10,6 +10,8 @@ Summary:        A sleek and powerful git GUI
 License:        GPLv2+
 URL:            https://git-cola.github.io
 Source0:        https://github.com/git-cola/git-cola/archive/v%{version}/%{name}-%{version}.tar.gz
+# https://github.com/git-cola/git-cola/pull/1050
+Patch0:         git-appdata.patch
 
 BuildArch:      noarch
 
@@ -19,10 +21,10 @@ BuildRequires:  git
 BuildRequires:  xmlto
 BuildRequires:  libappstream-glib
 BuildRequires:  rsync
-BuildRequires:  python3-pyqt5
+BuildRequires:  python3-qt5
 BuildRequires:  python3-devel
 BuildRequires:  python3-sphinx
-Requires:       python3-pyqt5
+Requires:       python3-qt5
 Requires:       python3-inotify
 Requires:       git
 Requires:       hicolor-icon-theme
@@ -34,6 +36,8 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 
 %prep
 %setup -q
+%patch0 -p 1
+
 # fix #!/usr/bin/env python to #!/usr/bin/python3 everywhere
 find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/python3Xg {}" \;
 
@@ -70,6 +74,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Mon Apr 06 2020 David Schwörer <davidsch@fedoraproject.org> - 3.4-5
+- Use python3-qt5 instead of python3-pyqt5
+- Fix FTBFS
+
 * Sat Feb 15 2020 David Aguilar <davvid@gmail.com> - 3.4-4
 - Use python3-pyqt5 instead of pyside2.
 
