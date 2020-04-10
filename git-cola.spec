@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        3.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -24,11 +24,14 @@ BuildRequires:  rsync
 BuildRequires:  python3-qt5
 BuildRequires:  python3-devel
 BuildRequires:  python3-sphinx
+
 Requires:       python3-qt5
 Requires:       python3-inotify
 Requires:       git
 Requires:       hicolor-icon-theme
 
+Suggests:       python3-qt5-webkit
+Suggests:       python3-qt5-webengine
 
 %description
 git-cola is a powerful git GUI with a slick and intuitive user interface.
@@ -74,7 +77,13 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
-* Mon Apr 06 2020 David Schwörer <davidsch@fedoraproject.org> - 3.4-5
+* Fri Apr 10 2020 David Schwörer <davidsch@fedoraproject.org> - 3.6-2
+- Update to 3.6
+
+* Fri Apr 10 2020 David Schwörer <davidsch@fedoraproject.org> - 3.4-5
+- Add weak dependency for showing shortcuts
+
+* Mon Apr 06 2020 David Schwörer <davidsch@fedoraproject.org> - 3.4-4
 - Use python3-qt5 instead of python3-pyqt5
 - Fix FTBFS
 
