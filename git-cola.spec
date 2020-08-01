@@ -4,7 +4,7 @@
 
 Name:           git-cola
 Version:        3.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -77,6 +77,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.6-4
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.6-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
