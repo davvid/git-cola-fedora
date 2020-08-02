@@ -1,17 +1,11 @@
-# This package depends on automagic byte compilation
-# https://fedoraproject.org/wiki/Changes/No_more_automagic_Python_bytecompilation_phase_2
-%global _python_bytecompile_extra 1
-
 Name:           git-cola
-Version:        3.6
-Release:        4%{?dist}
+Version:        3.7
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
 URL:            https://git-cola.github.io
 Source0:        https://github.com/git-cola/git-cola/archive/v%{version}/%{name}-%{version}.tar.gz
-# https://github.com/git-cola/git-cola/pull/1050
-Patch0:         git-appdata.patch
 
 BuildArch:      noarch
 
@@ -21,17 +15,20 @@ BuildRequires:  git
 BuildRequires:  xmlto
 BuildRequires:  libappstream-glib
 BuildRequires:  rsync
-BuildRequires:  python3-qt5
-BuildRequires:  python3-devel
-BuildRequires:  python3-sphinx
+BuildRequires:  python%{python3_pkgversion}-qt5
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-sphinx
 
-Requires:       python3-qt5
-Requires:       python3-inotify
+Requires:       python%{python3_pkgversion}-qt5
+Requires:       python%{python3_pkgversion}-inotify
 Requires:       git
 Requires:       hicolor-icon-theme
 
-Suggests:       python3-qt5-webkit
-Suggests:       python3-qt5-webengine
+%if 0%{?rhel} == 0
+# RHEL 7 doesn't support suggests and webengine isn't available
+Suggests:       python%{python3_pkgversion}-qt5-webkit
+Suggests:       python%{python3_pkgversion}-qt5-webengine
+%endif
 
 %description
 git-cola is a powerful git GUI with a slick and intuitive user interface.
@@ -39,20 +36,20 @@ git-cola is a powerful git GUI with a slick and intuitive user interface.
 
 %prep
 %setup -q
-%patch0 -p 1
 
 # fix #!/usr/bin/env python to #!/usr/bin/python3 everywhere
-find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/python3Xg {}" \;
+find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/dev/null && sed -i -e sX^#\!\ \*/usr/bin/env\ python\ \*"\\\$"X#\!/usr/bin/python%{python3_pkgversion}Xg {}" \;
 
 
 %build
-%global makeopts PYTHON="%{__python3}" SPHINXBUILD=sphinx-build-3
+%global makeopts PYTHON="%{__python3}" SPHINXBUILD="$(ls /usr/bin/sphinx-build*|tail -n1)"
 make %{?_smp_mflags} %{makeopts}
 make %{makeopts} doc
 
 
 %install
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install
+%py_byte_compile %{__python3} %{buildroot}%{_datadir}/git-cola/lib/
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-doc
 make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
 %find_lang %{name}
@@ -77,6 +74,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Sun Aug 02 2020 David Schwörer <davidsch@fedoraproject.org> - 3.7-1
+- Update to 3.7
+- Disable magic byte compilation
+
 * Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.6-4
 - Second attempt - Rebuilt for
   https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
