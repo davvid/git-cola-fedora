@@ -1,5 +1,5 @@
 Name:           git-cola
-Version:        3.7
+Version:        3.8
 Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 
@@ -59,21 +59,26 @@ make DESTDIR=%{buildroot} prefix=%{_prefix} %{makeopts} install-html
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola-folder-handler.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-cola.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/git-dag.desktop
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdata.xml
 
 %files -f %{name}.lang
 %doc COPYING COPYRIGHT README.md
 %{_bindir}/cola
 %{_bindir}/git-*
 %{_datadir}/applications/git*.desktop
-%{_datadir}/appdata/git*.appdata.xml
+%{_datadir}/metainfo/git*.appdata.xml
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_docdir}/%{name}/
+%{_docdir}/%{name}
 %{_mandir}/man1/git*.1*
+%{python3_sitelib}/cola
+%{python3_sitelib}/git_cola*egg-info
 
 
 %changelog
+* Thu Sep 17 2020 David Schwörer <davidsch@fedoraproject.org> - 3.8-1
+- Update to 3.8
+
 * Sun Aug 02 2020 David Schwörer <davidsch@fedoraproject.org> - 3.7-1
 - Update to 3.7
 - Disable magic byte compilation
