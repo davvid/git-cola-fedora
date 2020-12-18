@@ -18,6 +18,7 @@ BuildRequires:  rsync
 BuildRequires:  python%{python3_pkgversion}-qt5
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-sphinx
+BuildRequires: make
 
 Requires:       python%{python3_pkgversion}-qt5
 Requires:       python%{python3_pkgversion}-inotify
