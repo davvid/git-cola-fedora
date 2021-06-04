@@ -1,6 +1,6 @@
 Name:           git-cola
 Version:        3.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -77,6 +77,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdat
 
 
 %changelog
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 3.9-2
+- Rebuilt for Python 3.10
+
 * Fri Feb 19 2021 David Schwörer <davidsch@fedoraproject.org> - 3.9-1
 - Update to 3.9
 
