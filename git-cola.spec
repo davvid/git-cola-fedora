@@ -1,6 +1,6 @@
 Name:           git-cola
 Version:        3.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -24,6 +24,7 @@ Requires:       python%{python3_pkgversion}-qt5
 Requires:       python%{python3_pkgversion}-inotify
 Requires:       git
 Requires:       hicolor-icon-theme
+Requires:       python%{python3_pkgversion}dist(qtpy)
 
 %if 0%{?rhel} == 0
 # RHEL 7 doesn't support suggests and webengine isn't available
@@ -43,7 +44,7 @@ find . -type f -exec sh -c "head {} -n 1 | grep ^#\!\ \*/usr/bin/env\ python >/d
 
 
 %build
-%global makeopts PYTHON="%{__python3}" SPHINXBUILD="$(ls /usr/bin/sphinx-build*|tail -n1)"
+%global makeopts PYTHON="%{__python3}" SPHINXBUILD="$(ls /usr/bin/sphinx-build*|tail -n1)" NO_PRIVATE_LIBS=1 NO_VENDOR_LIBS=1
 make %{?_smp_mflags} %{makeopts}
 make %{makeopts} doc
 
