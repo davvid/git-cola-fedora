@@ -1,6 +1,6 @@
 Name:           git-cola
 Version:        3.10
-Release:        3%{?dist}
+Release:        %autorelease
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
@@ -78,7 +78,4 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdat
 
 
 %changelog
-* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.10-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
 %autochangelog
