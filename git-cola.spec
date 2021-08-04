@@ -1,6 +1,6 @@
 Name:           git-cola
-Version:        3.10
-Release:        2%{?dist}
+Version:        3.10.1
+Release:        1%{?dist}
 Summary:        A sleek and powerful git GUI
 
 License:        GPLv2+
