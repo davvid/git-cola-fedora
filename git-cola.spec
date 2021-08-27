@@ -21,7 +21,6 @@ BuildRequires:  python%{python3_pkgversion}-sphinx
 BuildRequires: make
 
 Requires:       python%{python3_pkgversion}-qt5
-Requires:       python%{python3_pkgversion}-inotify
 Requires:       git
 Requires:       hicolor-icon-theme
 Requires:       python%{python3_pkgversion}dist(qtpy)
