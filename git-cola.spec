@@ -23,7 +23,6 @@ BuildRequires: make
 Requires:       python%{python3_pkgversion}-qt5
 Requires:       git
 Requires:       hicolor-icon-theme
-Requires:       python%{python3_pkgversion}dist(qtpy)
 
 %if 0%{?rhel} == 0
 # RHEL 7 doesn't support suggests and webengine isn't available
